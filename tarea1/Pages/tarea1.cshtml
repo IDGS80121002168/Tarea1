@@ -1,0 +1,131 @@
+﻿@page
+@model tarea1.Pages.tarea1Model
+@{
+    ViewData["Title"] = "Calculadora de IMC";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        header{
+            display: none !important; 
+        }
+
+        footer {
+            display: none !important;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #218838;
+            }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+
+            .result p {
+                margin: 0;
+            }
+
+            .result img {
+                max-width: 150px;
+                display: block;
+                margin-top: 10px;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de IMC</h1>
+        <form method="post">
+            <label for="peso">Peso (kg):</label>
+            <input type="text" id="peso" name="peso" />
+
+            <label for="altura">Altura (m):</label>
+            <input type="text" id="altura" name="altura" />
+
+            <input type="submit" value="Calcular IMC" />
+        </form>
+
+        @if (Model.IMC.HasValue)
+        {
+            <div class="result">
+                <p>Su IMC es: @Model.IMC</p>
+                @if (Model.IMC < 18)
+                {
+                    <p>Peso Bajo</p>
+                    <img src="/asset/imagen1.jpg" alt="" />
+                }
+                else if (Model.IMC >= 18 && Model.IMC < 25)
+                {
+                    <p>Peso Normal</p>
+                    <img src="/asset/imagen2.jpg" alt="" />
+                }
+                else if (Model.IMC >= 25 && Model.IMC < 27)
+                {
+                    <p>Sobrepeso</p>
+                    <img src="/asset/imagen3.jpg" alt="" />
+                }
+                else if (Model.IMC >= 27 && Model.IMC < 30)
+                {
+                    <p>Obesidad grado I</p>
+                    <img src="/asset/imagen4.jpg" alt="" />
+                }
+                else if (Model.IMC >= 30 && Model.IMC < 40)
+                {
+                    <p>Obesidad grado II</p>
+                    <img src="/asset/imagen5.jpg" alt="" />
+                }
+                else
+                {
+                    <p>Obesidad grado III</p>
+                    <img src="/asset/imagen6.jpg" alt="" />
+                }
+            </div>
+        }
+    </div>
+</body>
+</html>

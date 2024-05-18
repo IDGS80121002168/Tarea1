@@ -1,0 +1,110 @@
+﻿@page
+@model programa3.Pages.tarea1Model
+@{
+    ViewData["Title"] = "Programa2";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+    <style>
+        header {
+            display: none !important;
+        }
+
+        footer {
+            display: none !important;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"], textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        select, input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+
+            .result p {
+                margin: 0;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Binomial Calculator</h2>
+
+        <form method="post">
+            <div>
+                <label>A:</label>
+                <input asp-for="A" />
+                <span asp-validation-for="A" style="color:red"></span>
+            </div>
+            <div>
+                <label>B:</label>
+                <input asp-for="B" />
+                <span asp-validation-for="B" style="color:red"></span>
+            </div>
+            <div>
+                <label>X:</label>
+                <input asp-for="X" />
+                <span asp-validation-for="X" style="color:red"></span>
+            </div>
+            <div>
+                <label>Y:</label>
+                <input asp-for="Y" />
+                <span asp-validation-for="Y" style="color:red"></span>
+            </div>
+            <div>
+                <label>N:</label>
+                <input asp-for="N" />
+                <span asp-validation-for="N" style="color:red"></span>
+            </div>
+            <div>
+                <button type="submit">Calcular</button>
+            </div>
+        </form>
+
+        @if (Model != null && Model.Result != 0)
+        {
+            <h3>Result: @Model.Result</h3>
+        }
+    </div>
+</body>
+</html>

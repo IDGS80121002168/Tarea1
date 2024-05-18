@@ -1,0 +1,61 @@
+﻿@page
+@model programa4.Pages.tarea1Model
+@{
+    ViewData["Title"] = "Programa4";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+    <style>
+        header {
+            display: none !important;
+        }
+
+        footer {
+            display: none !important;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .resultado p {
+            margin: 0;
+            padding: 5px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generador</h1>
+        <form method="post">
+            <input type="submit" value="Generar Arreglo" />
+        </form>
+
+        @if (Model.Numeros != null && Model.Numeros.Length > 0)
+        {
+            <div class="resultado">
+                <p><strong>Arreglo Aleatorio:</strong> @string.Join(", ", Model.Numeros)</p>
+                <p><strong>Suma:</strong> @Model.Suma</p>
+                <p><strong>Promedio:</strong> @Model.Promedio</p>
+                <p><strong>Moda:</strong> @string.Join(", ", Model.Moda)</p>
+                <p><strong>Mediana:</strong> @Model.Mediana</p>
+            </div>
+        }
+    </div>
+</body>
+</html>
